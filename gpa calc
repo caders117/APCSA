@@ -7,8 +7,7 @@ public class Main {
     Scanner scan = new Scanner(System.in);
     String grade;
     
-    System.out.println("._.")
-    //System.out.println("_.-^"^-._.-^"^-. GPA CALCULATOR _.-^"^-._.-^"^-.");
+    System.out.println("_.-^\"^-._.-^\"^-. GPA CALCULATOR _.-^\"^-._.-^\"^-.");
     System.out.print("Enter your grade (enter nothing to stop): ");
     grade = scan.nextLine();
     grade = grade.toUpperCase();
