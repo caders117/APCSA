@@ -1,0 +1,57 @@
+import java.util.Scanner;
+
+public class Main {
+  
+  public static void main(String[] args){
+    
+    Scanner scan = new Scanner(System.in);
+    String grade;
+    
+    System.out.println("._.")
+    //System.out.println("_.-^"^-._.-^"^-. GPA CALCULATOR _.-^"^-._.-^"^-.");
+    System.out.print("Enter your grade (enter nothing to stop): ");
+    grade = scan.nextLine();
+    grade = grade.toUpperCase();
+    double gpa = 0;
+    int gpaI = 0;
+
+    while(!grade.equals("")){
+      
+    if (grade.equals("A")){
+      System.out.println("Excellent");
+      gpa += 4.0;
+    }
+    else if (grade.equals("B")){
+      System.out.println("Good");
+      gpa += 3.0;
+    }
+    else if (grade.equals("C")){
+      System.out.println("Poor");
+      gpa += 2.0;
+    }
+    else if (grade.equals("D")){
+      System.out.println("Poor");
+      gpa += 1.0;
+    }
+    else if (grade.equals("F")){
+      System.out.println("Failure");
+      gpa += 0.0;
+    }
+    else{
+      System.out.println("Invalid Grade");
+      gpaI--;
+    }
+      
+      
+    gpaI++;
+    System.out.print("Enter your grade: ");
+    grade = scan.nextLine();
+    grade = grade.toUpperCase();
+    
+    }
+    
+    System.out.println("GPA: " + (int)(gpa / gpaI * 100) / 100.0);
+    System.out.println("\nK bye");
+
+    }
+}
