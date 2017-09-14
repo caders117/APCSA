@@ -3,8 +3,9 @@
 */
 import java.util.Scanner;
 import java.text.NumberFormat;
+import java.util.Locale;
 
-public class PizzaOrder
+public class Main
 {
     public static void main (String [] args)
     {
@@ -26,13 +27,13 @@ public class PizzaOrder
         int numberOfToppings = 0;           //number of toppings
 
         //prompt user and get first name
-        System.out.println("\fWelcome to Mike and Diane's Pizza");
+        System.out.println("\fWelcome to Mike and Diane's Pizza.  " +
+                            "Enter Q to quit at any time.");
         System.out.print("Enter your first name:  ");
         firstName = scan.nextLine();
 
         //determine if user is eligible for discount by
         //having the same first name as one of the owners
-
         if (firstName.equalsIgnoreCase("Diane") || firstName.equalsIgnoreCase("Mike"))
         {
             discount = true;
@@ -61,30 +62,30 @@ public class PizzaOrder
             cost = 14.99;
         } else if (inches == 16){
             cost = 16.99;
+        } else if (inches == 17){
+            cost = 17.99;
         }
-        /*switch (inches){
-            case 10: cost = 10.99;
-                     break;
-            case 12: cost = 12.99;
-                     break;
-            case 14: cost = 14.99;
-                     break;
-            case 16: cost = 16.99;
-                     break;
-        }*/
         
-
-
         //prompt user and get crust choice, store first character of
         //input string into a primitive type "char" variable.
         System.out.println("What type of crust do you want? ");
         System.out.print("(H)Hand-tossed, (T) Thin-crust, or " +
             "(D) Deep-dish (enter H, T, or D): ");
         input = scan.next();
-        crustType = input.charAt(0);
+        crustType = Character.toUpperCase(input.charAt(0));
 
         //set user's crust choice on pizza ordered
         //ADD LINES FOR TASK #2
+        if(crustType == 'H')
+          crust = "Hand-tossed";
+        else if (crustType == 'T')
+          crust = "Thin-crust";
+        else if (crustType == 'D')
+          crust = "Deep-dish";
+        else
+          crust = "Hand-tossed";
+          System.out.println("A valid crust was not entered, your pizza will be made" +
+                             " with hand-tossed crust.");
 
 
 
@@ -96,17 +97,19 @@ public class PizzaOrder
 
         //if topping is desired,
         //add to topping list and number of toppings
-        System.out.print("Do you want Pepperoni?  (Y/N):  ");
-        input = scan.next();
-        choice = input.charAt(0);
-        if (choice == 'Y' || choice == 'y')
-        {
+        String[] toppingChoices = {"Pepperoni ", "Sausage ", "Onion ", "Mushroom "};
+        
+        for(int i = 0; i < toppingChoices.length; i++){
+          System.out.print("Do you want " + toppingChoices[i] + "(Y/N):  ");
+          input = scan.next();
+          choice = input.charAt(0);
+          if (choice == 'Y' || choice == 'y')
+          {
             numberOfToppings += 1;
-            toppings = toppings + "Pepperoni ";
+            toppings = toppings + toppingChoices[i];
+          }
         }
-
-        //prompt user for Sausage, Onion and Mushroom choices
-
+        
         //add additional toppings cost to cost of pizza
         cost = cost + (1.25*numberOfToppings);
 
@@ -119,15 +122,24 @@ public class PizzaOrder
 
         //apply discount if user is elibible
         //ADD LINES FOR TASK #3 HERE
+        if(discount){
+          System.out.println("Since you are named " + firstName + 
+                             ", you get a $2.00 discount.");
+          cost -= 2;
+        }
 
         //EDIT PROGRAM FOR TASK #4
         //SO ALL MONEY OUTPUT APPEARS WITH 2 DECIMAL PLACES
-        System.out.println("The cost of your order is: $" + cost);
-
+        Locale locale = new Locale("en", "US");      
+        NumberFormat format = NumberFormat.getCurrencyInstance(locale);
+        
+        System.out.println("The cost of your order is: " + format.format(cost));
+        
         //calculate and display tax and total cost
         tax = cost * TAX_RATE;
-        System.out.println("The tax is:  $" + tax);
-        System.out.println("The total due is:  $" + (tax+cost));
+        
+        System.out.println("The tax is:  " + format.format(tax));
+        System.out.println("The total due is:  " + format.format((tax+cost)));
 
         System.out.println("Your order will be ready for pickup in 30 minutes.");
     }
