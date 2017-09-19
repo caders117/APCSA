@@ -7,7 +7,7 @@
 // ****************************************************************/
 import java.util.Scanner;
 
-public class Main
+public class Rock
 {
     public static void main(String[] args)
     {
@@ -58,6 +58,6 @@ public class Main
                 else
                     System.out.println("Scissors cut paper.  You lost :(");
         }
-        System.out.println("Thank you for playing!  Bye now.")
+        System.out.println("Thank you for playing!  Bye now.");
     }
 }
