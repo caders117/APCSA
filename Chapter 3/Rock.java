@@ -25,6 +25,8 @@ public class Rock
             personPlay = personPlay.toUpperCase();
             if(personPlay.equals("Q"))
                 break;
+            else if(!(personPlay.equals("R") || personPlay.equals("S") || personPlay.equals("P")))
+                continue;
             System.out.println(personPlay);
 
             //Generate computer's play (0,1,2). Use the Math.random() method
