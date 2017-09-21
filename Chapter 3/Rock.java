@@ -1,10 +1,10 @@
 /****************************************************************
-//   Simulates a rock paper scissors game between the player
-//   and the computer.
-//
-//   @author Cade Richard
-//   @version 9/7/2017
-// ****************************************************************/
+ *   Simulates a rock paper scissors game between the player
+ *   and the computer.
+ *
+ *   @author Cade Richard
+ *   @version 9/7/2017
+ ****************************************************************/
 import java.util.Scanner;
 
 public class Rock
@@ -16,6 +16,7 @@ public class Rock
         int computerInt;      //Randomly generated number for computer play
 
         Scanner scan = new Scanner(System.in);
+        System.out.print("\f");
         while(true){
             //Get player's play -- note that this is stored as a string
             System.out.print("Enter your play (R, P, or S) (Q to quit): ");
@@ -25,8 +26,10 @@ public class Rock
             personPlay = personPlay.toUpperCase();
             if(personPlay.equals("Q"))
                 break;
-            else if(!(personPlay.equals("R") || personPlay.equals("S") || personPlay.equals("P")))
+            else if(!(personPlay.equals("R") || personPlay.equals("S") || personPlay.equals("P"))){
+                System.out.println("Not a valid play.");
                 continue;
+            }
             System.out.println(personPlay);
 
             //Generate computer's play (0,1,2). Use the Math.random() method
