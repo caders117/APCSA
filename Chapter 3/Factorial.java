@@ -15,7 +15,7 @@ public class Factorial
         int num;
         int total = 0;
 
-        System.out.print("Enter a positive integer: ");
+        System.out.print("\fEnter a positive integer for me to factorialize: ");
         num = scan.nextInt();
 
         while(num <= 0){
@@ -30,6 +30,6 @@ public class Factorial
                 total *= i;
         }
 
-        System.out.println(total);
+        System.out.println(num + "! = " + total);
     }
 }
