@@ -1,9 +1,9 @@
 /****************************************************************
 //   This program simulates a game where the user 
-     uesses a number from 1 to 10
-     
-     @author Cade
-     @version 9/21/2017
+uesses a number from 1 to 10
+
+@author Cade
+@version 9/21/2017
 //          
 // ****************************************************************/
 import java.util.Scanner;
@@ -37,15 +37,22 @@ public class Guess
             } else {
                 low++;
             }
-            System.out.println(guess > numToGuess ? "Wrong guess lower: " : "Wrong guess higher: ");
+            System.out.print(guess > numToGuess ? "Wrong guess lower: " : "Wrong guess higher: ");
             guesses++;
             //read in guess
             guess = scan.nextInt();
         }
 
         //print message saying guess is right
-        System.out.println("Hey you got it in " + guesses + " guesses!");
-        System.out.println(high + " were too high.");
-        System.out.println(low + " were too low.");
+        System.out.println("Hey you got it in " + (guesses + 1) + " guesses!");
+        if(high == 1)
+            System.out.println(high + " was too high.");
+        else
+            System.out.println(high + " were too high.");
+            
+        if(low == 1)
+            System.out.println(low + " was too low.");
+        else
+            System.out.println(low + " were too low.");
     }
 }
