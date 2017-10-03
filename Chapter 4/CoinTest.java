@@ -11,21 +11,22 @@ public class CoinTest
 {
     public static void main (String[] args)
     {
-        final int FLIPS = 100; // number of coin flips
+        final int FLIPS = 10; // number of coin flips
 
         int currentRun = 0; // length of the current run of HEADS
         int maxRun = 0;     // length of the maximum run so far
 
         // Create a     coin object
         Coin coin = new Coin();
+        System.out.println("\f");
         // Flip the coin FLIPS times
         for (int i = 0; i < FLIPS; i++)
         {
             // Flip the coin & print the result
             coin.flip();
-            System.out.println(coin.toString());
+            System.out.println(coin);
             // Update the run information
-            if(coin.toString().equals("Heads")) {
+            if(coin.isHeads()) {
                 currentRun++;
                 if(currentRun > maxRun)
                     maxRun++;
