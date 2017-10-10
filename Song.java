@@ -1,3 +1,10 @@
+import java.io.File;
+
+import com.sun.media.jfxmedia.MediaPlayer;
+
+import javafx.scene.media.Media;
+
+
 /**
  * This class represents a song with a title, artist,
  * and length.  Included are getters and setters for 
@@ -71,5 +78,20 @@ public class Song {
 	 */
 	public String getLength(){
 		return length / 60 + ":" + (length % 60);
+	}
+	
+	/**
+	 * Method to get the length of the song in seconds.
+	 * @return returns the length of the song in seconds.
+	 */
+	public int getSecs(){
+		return length;
+	}
+	
+	public void play(){
+		String bip = "bip.mp3";
+		Media hit = new Media(new File(bip).toURI().toString());
+		MediaPlayer mediaPlayer = new MediaPlayer(hit);
+		mediaPlayer.play();
 	}
 }
