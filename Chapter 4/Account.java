@@ -14,9 +14,9 @@ public class Account
 	private String name;
 	private long acctNum;
 	
-	//----------------------------------------------
-	//Constructor -- initializes balance, owner, and account number
-	//----------------------------------------------
+	/**
+	 * Constructor -- initializes balance, owner, and account number
+	 */
 	public Account(double initBal, String owner, long number)
 	{
 		balance = initBal;
@@ -24,10 +24,10 @@ public class Account
 		acctNum = number;
 	}
 	
-	//----------------------------------------------
-	// Checks to see if balance is sufficient for withdrawal.
-	// If so, decrements balance by amount; if not, prints message.
-	//----------------------------------------------
+	/**
+	 * Checks to see if balance is sufficient for withdrawal.
+	 * If so, decrements balance by amount; if not, prints message.
+	 */
 	public void withdraw(double amount)
 	{
 		if (balance >= amount) {
@@ -37,45 +37,48 @@ public class Account
 		   System.out.println("Insufficient funds");
 	}
 	
-	//----------------------------------------------
-	// Adds deposit amount to balance.
-	//----------------------------------------------
+	/**
+	 * Adds deposit amount to balance.
+	 */
 	public void deposit(double amount)
 	{
 		balance += amount;
 		System.out.print("Deposit made.  ");
 	}
 	
-	//----------------------------------------------
-	// Returns balance.
-	//----------------------------------------------
+	/**
+	 * Method to get account's balance.
+	 * @return The balance of the account
+	 */
 	public double getBalance()
 	{
 		return balance;
 	}
 	
 	
-	//----------------------------------------------
-	// Returns a string containing the name, account number, and balance.
-	//----------------------------------------------
+	/**
+	 * toString override to get a string representation of the object
+	 * @return a string containing the name, account number, and balance.
+	 */
 	public String toString()
 	{
 		return name + "'s account\nBalance: " + balance + "\nAccount number: " + acctNum;
 	
 	}
 	
-	//----------------------------------------------
-	// Deducts $10 service fee
-	//----------------------------------------------
+	/**
+	 * Deducts $10 service fee
+	 */	
 	public double chargeFee()
 	{
 		System.out.print("Service fee charged.  ");
 		return balance -= 10;
 	}
 	
-	//----------------------------------------------
-	// Changes the name on the account 
-	//----------------------------------------------
+	/**
+	 * Changes the name on the account 
+	 * @param newName - the account's new name
+	 */
 	public void changeName(String newName)                   
 	{
 		System.out.println("Name changed from " + name + " to " + newName + ".");
