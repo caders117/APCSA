@@ -1,0 +1,23 @@
+package Finch;
+import edu.cmu.ri.createlab.terk.robot.finch.Finch;
+
+/**
+ * This program is used for testing out the Finch.
+ * @author rich8125
+ *
+ */
+public class FinchCommands {
+	public static void main(String[] args){
+		Finch myFinch = new Finch();
+		
+		System.out.print("Hi there!");
+		myFinch.sleep(1000); // in milliseconds (1000 = 1 second)
+		myFinch.setLED(255, 0, 0); // 0 to 255
+		myFinch.saySomething("This is pretty cool");
+		myFinch.setWheelVelocities(100, -100, 5000); // -255 to 255 & time is
+													// in milliseconds
+		myFinch.buzz(40, 1000);
+		myFinch.quit();
+		System.exit(0);
+	}
+}
