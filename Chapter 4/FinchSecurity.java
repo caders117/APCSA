@@ -9,16 +9,14 @@ public class FinchSecurity {
 		Finch myFinch = new Finch();
 		System.out.println("connected");
 
-		while(true){
-			if(myFinch.isShaken()){
-				break;
-			} else if(myFinch.isObstacle()){
+		while(!myFinch.isBeakUp()){
+			if(myFinch.isObstacle()){
 				myFinch.setLED(255, 0, 0, 1000);
 				myFinch.setLED(0, 0, 0, 1000);
 			} else {
 				myFinch.setWheelVelocities(-100, 100);
 				myFinch.buzz(262, 1000);
-				myFinch.saySomething("AAAAAAAA");
+				myFinch.saySomething("Back off");
 				myFinch.setLED(Color.GREEN, 1000);
 				myFinch.setLED(Color.BLUE, 1000);
 			}
