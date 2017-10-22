@@ -1,47 +1,64 @@
-// ****************************************************************
-//   Student.java
-//
-//   Define a student class that stores name, score on test 1, and
-//   score on test 2.  Methods prompt for and read in grades, 
-//   compute the average, and return a string containing student’s info. 
-// ****************************************************************
+/****************************************************************
+ *   Student class that takes two test scores and can compute the
+ *   average.  Includes a toString method.
+ *   @author Cade
+ *   @version 10/22/2017
+ * 
+ */
 import java.util.Scanner;
 
 public class Student
 {
-    //declare instance data 
+    private String name;
+    private int score1;
+    private int score2;
+    private Scanner scan = new Scanner(System.in);
 
-    //-----------------------------------------------
-    //constructor
-    //-----------------------------------------------
+    /**
+     * Constructor method for Student class
+     * @param studentName - Name of student
+     */
     public Student(String studentName)
     {
-	//add body of constructor
+		name = studentName;
+    }
+    
+    /**
+     * Method to return a string representation of the object
+     */
+    public String toString(){
+    	return "Name: " + name + "  Test1: " + score1 + "  Test2: " + score2;
     }
 
-    //-----------------------------------------------
-    //inputGrades: prompt for and read in student's grades for test1 and test2.
-    //Use name in prompts, e.g., "Enter's Joe's score for test1".
-    //-----------------------------------------------
+    /**
+     * Prompts for and read in student's grades for test1 and test2.
+     * 
+     */
     public void inputGrades()
     {
-	//add body of inputGrades
+		System.out.print("Enter " + name + "'s score for test1: ");
+		score1 = scan.nextInt();
+		System.out.print("Enter " + name + "'s score for test2: ");
+		score2 = scan.nextInt();
     }
 
-    //-----------------------------------------------
-    //getAverage: compute and return the student's test average
-    //-----------------------------------------------
-
-    //add header for getAverage
+    /**
+     * Computes and returns the student's test average
+     */
+    public double getAverage()
     {
-	//add body of getAverage
+		return (score1 + score2) / 2.0;
     }
 
-    //-----------------------------------------------
-    //getName: print the student's name
-    //-----------------------------------------------
-
-    //add header for printName
+    /**
+     * Getter method for the student's name
+     * @return The name of the student
+     */
+    public String getName(){
+    	return name;
+    }
+    
+    public void printName()
     {
 	//add body of printName
     }
