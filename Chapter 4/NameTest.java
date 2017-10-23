@@ -1,5 +1,12 @@
 import java.util.Scanner;
 
+/**
+ * This program creates two Name objects and prints out a bunch of
+ * the different ways the name can be represented and their lengths.
+ * Finally, it compares if the two names are equal.
+ * @author Cade
+ * @version 10/22/17
+ */
 public class NameTest {
 	public static void main(String[] args){
 		Scanner scan = new Scanner(System.in);
