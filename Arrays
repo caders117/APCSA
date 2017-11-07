@@ -1,0 +1,39 @@
+public class Main{
+  
+  public static void main(String[] args){
+    int[] nums = {1, 5, -310, -3, -45, 123, 4};
+    
+    printArray(nums);
+    
+    //swapArray(nums);
+    
+    printArray(nums);
+    
+    System.out.println(hasNeg(nums));
+    
+  }
+  
+  public static boolean hasNeg(int[] n){
+    for(int x : n)
+      if(x < 0)
+        return true;
+    return false;
+  }
+  
+  public static void printArray(int[] n){
+    
+    for(int temp : n)
+      System.out.print("[" + temp + "]");
+    
+    System.out.println();
+  }
+  
+  public static void swapArray(int[] n){
+    int temp;
+    for(int i = 0; i < n.length/2; i++){
+      temp = n[n.length - i - 1];
+      n[n.length - i - 1] = n[i];
+      n[i] = temp;
+    }
+  }
+}
