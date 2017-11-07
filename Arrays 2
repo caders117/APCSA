@@ -1,0 +1,40 @@
+public class Main{
+  
+  public static void main(String[] args){
+    String[] words = new String[8];
+    words[0] = "sunny";
+    words[1] = "funny";
+    words[2] = "super";
+    words[3] = words[1] + words[2];
+    words[7] = "Surprise";
+
+    printArray(words);
+    
+    
+    int countS = 0;
+    for(String x : words){
+      if(x == null)
+        continue;
+      if(x.toLowerCase().startsWith("s")) // or x.substring(0, 1).equalsIgnoreCase("s")
+        countS++;
+    }
+    
+    System.out.println("There are " + countS + " word(s) starting with 's'.");
+  }
+  
+  public static void printArray(int[] n){
+    
+    for(int temp : n)
+      System.out.print("[" + temp + "]");
+    
+    System.out.println();
+  }
+  
+  public static void printArray(String[] n){
+    
+    for(String temp : n)
+      System.out.print("[" + temp + "]");
+    
+    System.out.println();
+  }
+}
