@@ -20,7 +20,7 @@ public class ShoppingCart
         capacity = 5;
         itemCount = 0;
         totalPrice = 0.0;
-        cart = new Item[5];
+        cart = new Item[capacity];
     }
     
     /**
@@ -35,10 +35,14 @@ public class ShoppingCart
         
     /**
      * Adds an item to the shopping cart.
+     *
+     * @param itemName - the name of the item
+     * @param price - the price of the item
+     * @param quantity - the amount of items
      */
     public void addToCart(String itemName, double price, int quantity)
     {
-        if(itemCount > cart.length)
+        if(itemCount >= cart.length)
             increaseSize();
         cart[itemCount] = new Item(itemName, price, quantity);
         totalPrice += price * quantity;
