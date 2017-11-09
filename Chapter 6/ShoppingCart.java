@@ -20,7 +20,7 @@ public class ShoppingCart
         capacity = 5;
         itemCount = 0;
         totalPrice = 0.0;
-        cart = new Item[5];
+        cart = new Item[capacity];
     }
     
     /**
