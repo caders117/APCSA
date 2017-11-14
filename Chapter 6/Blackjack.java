@@ -11,6 +11,8 @@ public class Blackjack
     public static void main (String[] args)
     {
         DeckOfCards masterDeck = new DeckOfCards();
+        Scanner scan = new Scanner(System.in);
+        String playerAction;
         System.out.println("Would you like to play BlackJack?");
         masterDeck.shuffle(); // put Card objects in random order
         ArrayList<Card> playerDeck = new ArrayList<>();
@@ -20,6 +22,12 @@ public class Blackjack
             compDeck.add(masterDeck.dealCard());
         }
         System.out.println("Your cards are: " + playerDeck.get(0) + " and " + playerDeck.get(1));
-
+        System.out.print("(H)it or (S)tand: ");
+        playerAction = scan.next();
+        if(playerAction.equalsIgnoreCase("H"))
+            playerDeck.add(masterDeck.dealCard());
+        else if(playerAction.equalsIgnoreCase("S"))
+            //do computer stuff       
     }
 }
+
