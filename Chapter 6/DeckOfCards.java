@@ -20,7 +20,7 @@ public class DeckOfCards {
         currentCard = 0; // set currentCard so first Card dealt is deck[0]
         // populate deck with Card objects
         for (int count = 0; count < deck.length; count ++){            
-            deck [ count ] = new Card(faces[count % 13], suits [count / 13], count % 13);
+            deck [ count ] = new Card(faces[count % 13], suits [count / 13], (count % 13 + 1> 10 ? 10 : count % 13 + 1));
         }
     } // end DeckOfCards constructor
     // -----------------------------------------------------------
