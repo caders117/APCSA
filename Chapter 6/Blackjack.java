@@ -20,8 +20,8 @@ public class Blackjack
         ArrayList<Card> compDeck = new ArrayList<>();
         for(int i = 0; i < 2; i++){
             playerDeck.add(masterDeck.dealCard());
-            System.out.println(masterDeck.dealCard().getValue());
-            System.out.println(playerTotal += playerDeck.get(playerDeck.size() - 1).getValue());
+            System.out.println(playerDeck.get(playerDeck.size() - 1).getValue());
+            playerTotal += playerDeck.get(playerDeck.size() - 1).getValue();
             compDeck.add(masterDeck.dealCard());
             compTotal += compDeck.get(compDeck.size() - 1).getValue();
         }
