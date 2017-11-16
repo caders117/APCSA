@@ -19,8 +19,9 @@ public class DeckOfCards {
         deck = new Card[ NUMBER_OF_CARDS ];
         currentCard = 0; // set currentCard so first Card dealt is deck[0]
         // populate deck with Card objects
-        for (int count = 0; count < deck.length; count ++)
-            deck [ count ] = new Card(faces[count % 13], suits [count / 13]);
+        for (int count = 0; count < deck.length; count ++){            
+            deck [ count ] = new Card(faces[count % 13], suits [count / 13], count % 13);
+        }
     } // end DeckOfCards constructor
     // -----------------------------------------------------------
     // Shuffle deck of Cards by randomly switching all cards in deck.
