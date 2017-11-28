@@ -8,7 +8,7 @@ import java.util.Scanner;
  * @author Cade
  * @version 11/9/17
  */
-public class ShopTest
+public class ShopTest2
 {
    public static void main(String[] args){
        boolean shopping = true;
