@@ -1,55 +1,39 @@
 package ch06;
-/**********************************************************************
- * Represents a shopping cart as an array of items
+import java.util.Scanner;
+
+/**
+ * This program is used to test the ShoppingCart
+ * class and adding items to a cart.
  * 
  * @author Cade
  * @version 11/9/17
- **********************************************************************/
-import java.text.NumberFormat;
-public class ShoppingCart
+ */
+public class ShopTest3
 {
-    private int itemCount; // total number of items in the cart
-    private double totalPrice; // total price of items in the cart
-    private int capacity; // current cart capacity
-    private Item[] cart;
-    
-    /**
-     * Creates an empty shopping cart with a capacity of 5 items.
-     */
-    public ShoppingCart()
-    {
-        capacity = 5;
-        itemCount = 0;
-        totalPrice = 0.0;
-        cart = new Item[5];
-    }
-    
-    /**
-     * Adds an item to the shopping cart.
-     */
-    public void addToCart(String itemName, double price, int quantity)
-    {
-        cart[itemCount] = new Item(itemName, price, quantity);
-        totalPrice += price * quantity;
-        itemCount++;
-
-    }
-    
-    /**
-     * Returns the contents of the cart together with
-     * summary information.
-     * 
-     * @return a nicely formatted summary of the cart
-     */
-    public String toString()
-    {
-        NumberFormat fmt = NumberFormat.getCurrencyInstance();
-        String contents = "\nS h o p p i n g  C a r t\n";
-        contents += "\nItem\t\tUnit Price\tQuantity\tTotal\n";
-        for (int i = 0; i < itemCount; i++)
-            contents += cart[i].toString() + "\n";
-        contents += "\nPlease pay: " + fmt.format(totalPrice);
-        contents += "\n";
-        return contents;
+   public static void main(String[] args){
+       boolean shopping = true;
+       Scanner scan = new Scanner(System.in);
+       ShoppingCart3 cart = new ShoppingCart3();
+       System.out.print("\fDo you want to go shopping? (Y/N) ");
+       shopping = scan.next().equalsIgnoreCase("y") ? true : false;
+       while (shopping) {
+           if(shopping){
+               String thing;
+               double price;
+               int quantity;
+               System.out.print("What do you want to buy? ");
+               thing = scan.next();
+               System.out.print("What's the price? ");
+               price = scan.nextDouble();
+               System.out.print("How many? ");
+               quantity = scan.nextInt();
+               cart.addToCart(thing, price, quantity);
+           }
+           System.out.print("\nDo you want to continue shopping? (Y/N) ");
+           shopping = scan.next().equalsIgnoreCase("y") ? true : false;
+        }
+        
+       System.out.println(cart);
+      
     }
 }
