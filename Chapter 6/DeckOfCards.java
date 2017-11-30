@@ -1,9 +1,12 @@
-package ch06;
-// **********************************************************************
-// DeckOfCards.java
-//
-// Contains a deck of Card objects. Methods to shuffle and deal Cards.
-// **********************************************************************
+package blackjackGUI;
+
+/**********************************************************************
+ * DeckOfCards.java
+ *
+ * Contains a deck of Card objects. Methods to shuffle and deal Cards.
+ * @author Cade
+ * @version 11/9/2017
+ **********************************************************************/
 public class DeckOfCards {
     private Card deck[];
     private int currentCard;
@@ -11,9 +14,9 @@ public class DeckOfCards {
     private String faces[] = {"Ace", "Deuce", "Three", "Four", "Five", "Six",
             "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"};
     private String suits[] = { "Hearts", "Diamonds", "Clubs", "Spades" };
-    // -----------------------------------------------------------
-    // Constructor fills a deck array with Card objects.
-    // -----------------------------------------------------------
+    /**
+     * Constructor fills a deck array with Card objects.
+     */
     public DeckOfCards()
     {
         deck = new Card[ NUMBER_OF_CARDS ];
@@ -23,9 +26,10 @@ public class DeckOfCards {
             deck [ count ] = new Card(faces[count % 13], suits [count / 13], (count % 13 + 1> 10 ? 10 : count % 13 + 1));
         }
     } // end DeckOfCards constructor
-    // -----------------------------------------------------------
-    // Shuffle deck of Cards by randomly switching all cards in deck.
-    // -----------------------------------------------------------
+    
+    /**
+     * Shuffle deck of Cards by randomly switching all cards in deck.
+	 */
     public void shuffle()
     {
         for (int first = 0; first < deck.length; first++)
@@ -38,9 +42,10 @@ public class DeckOfCards {
             deck[ second ] = temp;
         }
     } // end method shuffle
-    // -----------------------------------------------------------
-    // Deals one Card.
-    // -----------------------------------------------------------
+    
+    /**
+     * Deals one Card.
+     */
     public Card dealCard()
     {
         // determine whether Cards remain to be dealt
