@@ -1,0 +1,19 @@
+import edu.cmu.ri.createlab.terk.robot.finch.Finch;
+
+public class SimonSays {
+    public static void main(String[] args){
+        Finch finch = new Finch();
+        System.out.println("Connected");
+        boolean simon= true;
+        int[] commands = {
+        ArrayList<String> says = new ArrayList<String>();
+        while (simon == true) {
+            for (int x : says){
+                System.out.println();
+                
+            }
+            says.add
+                
+        
+    }
+}
