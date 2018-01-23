@@ -37,7 +37,7 @@ public class Account
 	}
 	
 	public String toString(){
-		return name + "'s account number is " + acctNum + ".  Balance is $" + 600 + ".";
+		return name + "'s account number is " + acctNum + ".  Balance is $" + balance + ".";
 		
 	}
 	//----------------------------------------------
