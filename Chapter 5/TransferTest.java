@@ -1,5 +1,8 @@
 import java.util.Scanner;
 
+/**
+ * Tests an even more flexible account class
+ */
 public class TransferTest {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
