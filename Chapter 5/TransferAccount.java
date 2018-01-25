@@ -101,7 +101,7 @@ public class Account
     {
         if (balance >= amount){
             balance -= amount;
-            System.out.println("Withdraw $" + amount + " from " + name + "'s account.  New balance is $" + balance + ".");
+            System.out.println("Withdraw $" + amount + " from " + name + "'s account.  New balance is $" + balance + "0.");
         } else
             System.out.println("Insufficient funds");
     }
