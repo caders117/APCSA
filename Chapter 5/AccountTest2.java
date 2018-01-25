@@ -1,5 +1,11 @@
 import java.util.Scanner;
 
+/**
+ * Tests a slightly more flexible account class
+ * 
+ * @author cade
+ * @version 1/25/2018
+ */
 public class AccountTest2 {
     public static void main(String[] args){
         String name;
