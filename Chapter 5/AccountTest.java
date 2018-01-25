@@ -1,7 +1,13 @@
-package ch05;
-
+/**
+ * This program tests a basic account class.
+ * 
+ * @author Cade
+ * @version 1/25/2018
+ */
 public class AccountTest {
 	public static void main(String[] args){
+	    System.out.println("\f");
+	    
 		Account acc1 = new Account(1000, "John", 1234);
 		Account acc2 = new Account("Sally");
 		Account acc3 = new Account(5500, "Tommy");
