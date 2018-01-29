@@ -1,3 +1,9 @@
+/**
+ * Priority interface for Tasks to implement
+ * 
+ * @author Cade
+ * @version 1/29/2018
+ */
 public interface Priority {
     
     static int MIN_PRIORITY = 1;
