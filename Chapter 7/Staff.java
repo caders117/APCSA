@@ -1,14 +1,14 @@
-//********************************************************************
-// Staff.java Author: Lewis/Loftus
-//
-// Represents the personnel staff of a particular business.
-//********************************************************************
+/********************************************************************
+ * Staff.java Author: Lewis/Loftus
+ *
+ * Represents the personnel staff of a particular business.
+ ********************************************************************/
 public class Staff
 {
     StaffMember[] staffList;
-    //-----------------------------------------------------------------
-    // Sets up the list of staff members.
-    //-----------------------------------------------------------------
+    /**
+     * Sets up the list of staff members.
+     */
     public Staff ()
     {
         staffList = new StaffMember[8];
@@ -25,9 +25,9 @@ public class Staff
         staffList[5] = new Volunteer ("Cliff", "321 Duds Lane",
             "555-7282");
         staffList[6] = new Commission ("Dave", "983 Street Street",
-            "555-3784", "289-12-3892", 6.25, .2)
+            "555-3784", "289-12-3892", 6.25, .2);
         staffList[7] = new Commission ("Dave", "983 Street Street",
-            "555-3784", "289-12-3892", 9.75, .15)
+            "555-3784", "289-12-3892", 9.75, .15);
         ((Executive)staffList[0]).awardBonus (500.00);
         ((Hourly)staffList[6]).addHours (40);
         ((Commission)staffList[6]).addHours(35);
@@ -35,9 +35,10 @@ public class Staff
         ((Commission)staffList[7]).addHours(40);
         ((Commission)staffList[7]).addSales(950);
     }
-    //-----------------------------------------------------------------
-    // Pays all staff members.
-    //-----------------------------------------------------------------
+    
+    /**
+     * Pays all staff members.
+     */
     public void payday ()
     {
         double amount;
