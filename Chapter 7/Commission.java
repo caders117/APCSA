@@ -15,6 +15,7 @@ public class Commission extends Hourly {
                         double commRate) {
         super(name, address, phone, social, hourlyRate);
         this.commRate = commRate;
+        totalSales = 0;
     }
     
     /**
@@ -30,7 +31,11 @@ public class Commission extends Hourly {
      * Pays this staffmember
      */
     public double pay() {
+
+        double amt = super.pay();
+        
+        double payment = amt + commRate * totalSales;
         totalSales = 0;
-        return totalSales * commRate + super.pay();
+        return payment;
     }
 }
