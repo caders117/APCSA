@@ -10,7 +10,7 @@ public class Game {
 		Scanner scan = new Scanner(System.in);
 		GameBoard game = new GameBoard(4, 4);
 		ArrayList<NamedThing> things = new ArrayList<NamedThing>();
-		Player p = new Player("The Player", "You", 0, 0);
+		Player p = new Player("Player", "You", 0, 0);
 		things.add(p);
 		BigBird b1 = new BigBird("Big Bird", "A big, yellow, dangerous bird", 3, 3);
 		things.add(b1);
@@ -21,12 +21,12 @@ public class Game {
 		System.out.println("Type 'help' for a list of commands.");
 		System.out.println("Type '<command> help' for further details on how to use the command.");
 		System.out.println("Good luck!");
-		System.out.println(things.get(0));
 		System.out.println(Arrays.toString(things.toArray()));
 
 		System.out.println(Arrays.toString(game.getBoard().toArray()));
-		game.printBoard();
+		System.out.println(game.printBoard());
 		System.out.println(game.contentsOfPos(game, p.getX(), p.getY()));
+		System.out.print("Type command: ");
 		//String input = scan.nextLine();
 	}
 	
