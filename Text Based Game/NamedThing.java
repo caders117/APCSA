@@ -23,7 +23,15 @@ public class NamedThing {
 		return y;
 	}
 	
-	public String nameAndDesc() {
+	public String toString() {
 		return name + ": " + description;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public String getDescription() {
+		return description;
 	}
 }
