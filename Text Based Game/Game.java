@@ -14,6 +14,7 @@ public class Game {
 		things.add(player);
 		BigBird b1 = new BigBird("Big Bird", "A big, yellow, dangerous bird", 3, 3);
 		things.add(b1);
+		game.updateBoard(things);
 		//Elmo elmo = new Elmo("Elmo", "ELMO!!", )
 		game.updateBoard(things);
 		System.out.println("Welcome to [Game name]!");
