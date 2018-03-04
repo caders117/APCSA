@@ -1,5 +1,5 @@
 public class Player extends Entity {
-
+	private ArrayList<Item> stuff = new ArrayList<Item>;
 	public Player(String name, String desc, int xPos, int yPos) {
 		super(name, desc, xPos, yPos);
 	}
@@ -19,5 +19,14 @@ public class Player extends Entity {
 	
 	public void moveEast() {
 		moveTo(getX() + 1, getY());
+	}
+	public  void throw() {
+		for(Item o : stuff) {
+			if(o instanceOf GoldFish)
+				break;
+			else
+				stuff.remove(o.get());
+			
+		}
 	}
 }
