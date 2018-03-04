@@ -18,10 +18,9 @@ public class GameBoard {
 		for(int i = 0; i < this.getBoard().size(); i++)
 			for(int j = 0; j < this.getBoard().get(i).size(); j++)
 				this.getBoard().get(i).get(j).clear();
-		for(int i = 0; i < things.size(); i++) {
-			int itemX = things.get(i).getX();
-			int itemY = things.get(i).getY();
-			NamedThing thing = things.get(i);
+		for(NamedThing thing : things) {
+			int itemX = thing.getX();
+			int itemY = thing.getY();
 			this.getBoard().get(itemY).get(itemX).add(thing);
 		}
 	}
