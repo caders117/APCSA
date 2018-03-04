@@ -11,6 +11,10 @@ public class NamedThing {
 	}
 	
 	public void moveTo(int newX, int newY) {
+		if(newX < 0 || newY < 0 || newX > 3 || newY > 3) {
+			System.out.println("Can't move out of map.");
+			return;
+		}
 		x = newX;
 		y = newY;
 	}
