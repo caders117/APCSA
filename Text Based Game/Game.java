@@ -59,7 +59,7 @@ public class Game {
 				System.out.println("Thank you for playing!  Come again soon.");
 				break;
 			} else {
-				System.out.println("Invalid command entered.");
+				System.out.println("Invalid command entered.\n");
 				continue;
 			}
 			game.updateBoard(things);
