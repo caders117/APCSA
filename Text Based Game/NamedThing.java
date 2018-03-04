@@ -17,6 +17,8 @@ public class NamedThing {
 	}
 	
 	public void moveTo(int newX, int newY) {
+		System.out.println(newX + " " + boundsX);
+		System.out.println(newY + " " + boundsY);
 		if(newX < 0 || newY < 0 || newX > boundsX || newY > boundsY) {
 			System.out.println("Can't move out of map.");
 			return;

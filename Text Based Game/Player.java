@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class Player extends Entity {
 
 	public Player(String name, String desc, int xPos, int yPos) {

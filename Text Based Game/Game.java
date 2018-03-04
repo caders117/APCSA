@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Game {
@@ -8,15 +7,15 @@ public class Game {
 
 	public static void main(String[] args) {		
 		Scanner scan = new Scanner(System.in);
-		GameBoard game = new GameBoard(4, 4);
+		GameBoard game = new GameBoard(10, 10);
 		ArrayList<NamedThing> things = new ArrayList<NamedThing>();
 		Player player = new Player("Player", "You", 0, 0);
 		things.add(player);
 		BigBird b1 = new BigBird("Big Bird", "A big, yellow, dangerous bird", 3, 3);
 		things.add(b1);
-		game.updateBoard(things);
 		//Elmo elmo = new Elmo("Elmo", "ELMO!!", )
 		game.updateBoard(things);
+		updateBounds(things, game);
 		System.out.println("Welcome to [Game name]!");
 		System.out.println("Your goal is to kill enough Big Birds so that you can fight Elmo.");
 		System.out.println("Type 'help' for a list of commands.");
@@ -26,7 +25,6 @@ public class Game {
 
 		String inputStr;
 		while(true) {
-			
 			System.out.print("Type command: ");
 			inputStr = scan.nextLine();
 			inputStr = inputStr.toLowerCase();
@@ -56,6 +54,15 @@ public class Game {
 					default:	  System.out.println("Invalid Direction");
 									break;
 				}
+			} else if(input.length == 3 && input[0].equals("pick") && input[1].equals("up")) {
+				ArrayList<NamedThing> availableItems = new ArrayList<NamedThing>();
+				for(all adjacent cells) {
+					availableItems.addAll(game.getBoard().get(player.getY()).get(player.getX() + 1));
+				}
+				player.pickUpItemByName(input[2]);
+				
+			} else if(input[0].equals("fight") && input.length == 3) {
+				
 			} else if(input[0].equals("quit") && input.length == 1) {
 				System.out.println("Thank you for playing!  Come again soon.");
 				break;
@@ -101,6 +108,8 @@ public class Game {
 				+ "       - south - moves player towards bottom of screen\n"
 				+ "       - west - moves player towards left side of screen\n"
 				+ "       - east - moves player towards right side of screen\n"
+				+ "pick up <item name> - picks up item in adjacent cell with specified name"
+				+ "fight <enemy name> - fight enemy in cell adjacent to you"
 				+ "quit - Exits out of the game.  Progress is not saved.\n";
 		return help;
 	}

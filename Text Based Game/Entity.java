@@ -17,10 +17,18 @@ public class Entity extends NamedThing {
 		items.remove(i);
 	}
 	
+	public void pickUpItemByName(String name) {
+		
+	}
+	
+	public void updateItems() {
+		for(int i = 0; i < items.size(); i++) {
+			items.get(i).moveTo(this.getX(), this.getY());
+		}
+	}
+	
 	public void moveTo(int newX, int newY) {
 		super.moveTo(newX, newY);
-		for(int i = 0; i < items.size(); i++) {
-			items.get(i).moveTo(newX, newY);
-		}
+		updateItems();
 	}
 }
