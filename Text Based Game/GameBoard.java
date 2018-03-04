@@ -26,12 +26,16 @@ public class GameBoard {
 		}
 	}
 	
-	public String contentsOfPos(GameBoard board, int x, int y) {
+	public String contentsOfPos(int x, int y) {
 		String contentStr = "Contents of position (" + x + ", " + y + "):\n";
 		NamedThing contentObj;
-		for(int i = 0; i < board.getBoard().get(y).get(x).size(); i++) {
-			contentObj = board.getBoard().get(y).get(x).get(i);
-			contentStr += contentObj.toString() + "\n";
+		if(!getBoard().get(y).get(x).isEmpty()) {
+			 for(int i = 0; i < getBoard().get(y).get(x).size(); i++) {
+			 	contentObj = getBoard().get(y).get(x).get(i);
+			 	contentStr += contentObj.toString() + "\n";
+			 }
+		} else {
+			contentStr = "There is nothing at position (" + x + ", " + y + ")\n"; 
 		}
 		return contentStr;
 	}
