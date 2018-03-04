@@ -44,29 +44,35 @@ public class GameBoard {
 		String boardStr = "";
 		
 		// Top Border
-		boardStr += "+";
+		boardStr += "  ";
+		for(int w = 0; w < board.get(0).size(); w++) {
+			boardStr += "  " + w + "  ";
+		}
+		boardStr += "\n";
+		boardStr += "  +";
 		for(int w = 0; w < board.get(0).size(); w++) {
 			boardStr += "----+";
 		}
 		boardStr += "\n";
 		
+		
 		//Rest of Board
 		for(int h = 0; h < board.size(); h++) {
 			
 			// Vertical seperator
-			boardStr += "|";
+			boardStr += h + " |";
 			for(int w = 0; w < board.get(h).size(); w++) {
 				if(board.get(h).get(w).isEmpty()) {
 					boardStr += "    |";
+				} else {
+					boardStr += "  " + board.get(h).get(w).get(0).getName().charAt(0) + " |";
 				}
 			}
-			boardStr += "\n+";
+			boardStr += "\n  +";
 			
 			// Horizontal row between cells
 			for(int w = 0; w < board.get(h).size(); w++) {
-				if(board.get(h).get(w).isEmpty()) {
-					boardStr += "----+";
-				}
+				boardStr += "----+";
 			}
 			boardStr += "\n";
 		}
