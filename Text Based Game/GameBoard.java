@@ -42,12 +42,33 @@ public class GameBoard {
 	
 	public String printBoard() {
 		String boardStr = "";
+		
+		// Top Border
+		boardStr += "+";
+		for(int w = 0; w < board.get(0).size(); w++) {
+			boardStr += "----+";
+		}
+		boardStr += "\n";
+		
+		//Rest of Board
 		for(int h = 0; h < board.size(); h++) {
+			
+			// Vertical seperator
+			boardStr += "|";
 			for(int w = 0; w < board.get(h).size(); w++) {
 				if(board.get(h).get(w).isEmpty()) {
 					boardStr += "    |";
 				}
 			}
+			boardStr += "\n+";
+			
+			// Horizontal row between cells
+			for(int w = 0; w < board.get(h).size(); w++) {
+				if(board.get(h).get(w).isEmpty()) {
+					boardStr += "----+";
+				}
+			}
+			boardStr += "\n";
 		}
 		return boardStr;
 	}
