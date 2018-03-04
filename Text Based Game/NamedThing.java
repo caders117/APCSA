@@ -1,5 +1,6 @@
 
 public class NamedThing {
+	private int boundsX, boundsY;
 	private int x, y;
 	private String name, description;
 	
@@ -10,8 +11,13 @@ public class NamedThing {
 		this.description = description;
 	}
 	
+	public void setBounds(int x, int y) {
+		boundsX = x;
+		boundsY = y;
+	}
+	
 	public void moveTo(int newX, int newY) {
-		if(newX < 0 || newY < 0 || newX > 3 || newY > 3) {
+		if(newX < 0 || newY < 0 || newX > boundsX || newY > boundsY) {
 			System.out.println("Can't move out of map.");
 			return;
 		}
