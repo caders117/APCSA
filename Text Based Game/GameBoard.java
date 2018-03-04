@@ -14,6 +14,28 @@ public class GameBoard {
 		}
 	}
 	
+	public void updateBoard(ArrayList<NamedThing> things) {
+		for(int i = 0; i < this.getBoard().size(); i++)
+			for(int j = 0; j < this.getBoard().get(i).size(); j++)
+				this.getBoard().get(i).get(j).clear();
+		for(int i = 0; i < things.size(); i++) {
+			int itemX = things.get(i).getX();
+			int itemY = things.get(i).getY();
+			NamedThing thing = things.get(i);
+			this.getBoard().get(itemY).get(itemX).add(thing);
+		}
+	}
+	
+	public String contentsOfPos(GameBoard board, int x, int y) {
+		String contentStr = "Contents of position (" + x + ", " + y + "):\n";
+		NamedThing contentObj;
+		for(int i = 0; i < board.getBoard().get(y).get(x).size(); i++) {
+			contentObj = board.getBoard().get(y).get(x).get(i);
+			contentStr += contentObj.toString() + "\n";
+		}
+		return contentStr;
+	}
+	
 	public List<ArrayList<ArrayList<NamedThing>>> getBoard() {
 		return board;
 	}
