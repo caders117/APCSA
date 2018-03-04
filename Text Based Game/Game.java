@@ -68,6 +68,11 @@ public class Game {
 		}
 		scan.close();
 	}
+	
+	public static void updateBounds(ArrayList<NamedThing> things, GameBoard game) {
+		for(NamedThing thing : things)
+			thing.setBounds(game.getBoard().get(0).size(), game.getBoard().size());
+	}
 
 	public static String output(String inputStr, GameBoard game) {
 
