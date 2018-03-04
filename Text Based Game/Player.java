@@ -7,11 +7,12 @@ public class Player extends Entity {
 	}
 	
 	public void moveNorth() {
-		moveTo(getX(), getY() + 1);
+		moveTo(getX(), getY() - 1);
+		
 	}
 	
 	public void moveSouth() {
-		moveTo(getX(), getY() - 1);
+		moveTo(getX(), getY() + 1);
 	}
 	
 	public void moveWest() {
