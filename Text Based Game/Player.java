@@ -1,9 +1,11 @@
 
 public class Player extends Entity {
-	private int goldCount =0;
+	private int goldCount = 0;
 	private ArrayList<Item> stuff = new ArrayList<Item>;
 	public Player(String name, String desc, int xPos, int yPos) {
 		super(name, desc, xPos, yPos);
+		goldCount = 0;
+
 	}
 	
 	public void moveNorth() {
@@ -30,6 +32,14 @@ public class Player extends Entity {
 				stuff.remove(o.get());
 			
 		}
+	}
+	
+	public void pickUpGoldFish(int amt) {
+		numGold += amt;
+	}
+	
+	public void pickUpItem(Item i) {
+		items.add(i);
 	}
 	
 	public int getGoldCount() {
