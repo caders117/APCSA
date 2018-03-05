@@ -89,6 +89,7 @@ public class Game {
 							player.updateItems();
 						}
 					}
+					
 					if(!itemsPickedUp.isEmpty()) {
 						for(Item i : itemsPickedUp) {
 							if(i instanceof BirdFood)

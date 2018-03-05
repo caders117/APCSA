@@ -11,7 +11,7 @@ public class Entity extends NamedThing {
 		super(name, desc, xPos, yPos);
 		items = new ArrayList<Item>();
 		goldfish = new GoldFish("Goldfish", "Food to access Elmo", xPos, yPos, 0);
-		birdfood = new BirdFood("Birdfood", "Food to scare away birds", xPos, yPos, 0);
+		birdfood = new BirdFood("Food", "Food to scare away birds", xPos, yPos, 0);
 		items.add(goldfish);
 		items.add(birdfood);
 	}

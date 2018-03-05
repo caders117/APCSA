@@ -1,7 +1,5 @@
 public class Player extends Entity {
 
-	
-	
 	public Player(String name, String desc, int xPos, int yPos) {
 		super(name, desc, xPos, yPos);
 	}
