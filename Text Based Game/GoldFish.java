@@ -6,6 +6,10 @@ public class GoldFish extends Item {
 		amt = amount;
 	}
 	
+	public void setAmount(int amt) {
+		this.amt = amt;
+	}
+	
 	public int getAmount() {
 		return amt;
 	}

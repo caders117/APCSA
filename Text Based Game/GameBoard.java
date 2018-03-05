@@ -53,7 +53,7 @@ public class GameBoard {
 		// Top Border
 		boardStr += "  ";
 		for(int w = 0; w < board.get(0).size(); w++) {
-			boardStr += "  " + w + "  ";
+			boardStr += "  " + w + "   ";
 		}
 		boardStr += "\n";
 		boardStr += "  +";
@@ -75,7 +75,7 @@ public class GameBoard {
 					boolean added = false;
 					for(int i = 0; i < board.get(h).get(w).size(); i++) {
 						if(board.get(h).get(w).get(i).isEnabled()) {
-							boardStr += "  " + board.get(h).get(w).get(0).getName().charAt(i) + "  |";
+							boardStr += "  " + board.get(h).get(w).get(i).getName().charAt(0) + "  |";
 							added = true;
 							break;
 						}

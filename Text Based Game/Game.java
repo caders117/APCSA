@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Scanner;
 
 public class Game {
@@ -15,12 +16,16 @@ public class Game {
 		things.add(elmo);
 		Player player = new Player("Player", "You", 0, 0);
 		things.add(player);
-		BigBird b1 = new BigBird("Big Bird", "A big, yellow, dangerous bird", 3, 3);
-		things.add(b1);
-		BirdFood bf = new BirdFood("Food", "Use to scare away Big Birds", 2, 0, 10);
-		things.add(bf);
 		things.add(player.getBirdfood());
 		things.add(player.getGoldfish());
+		BigBird b1 = new BigBird("Big Bird", "A big, yellow, dangerous bird", 3, 3);
+		b1.setBirdFood(3);
+		b1.setGoldFish(2);
+		things.add(b1);
+		things.add(b1.getGoldfish());
+		things.add(b1.getBirdfood());
+		BirdFood bf = new BirdFood("Food", "Use to scare away Big Birds", 2, 0, 10);
+		things.add(bf);
 		
 		game.updateBoard(things);
 		updateBounds(things, game);
@@ -105,18 +110,24 @@ public class Game {
 					continue;
 				}
 			} else if(input.length == 4 && input[0].equals("throw") && input[1].equals("food")) {
+				boolean scaredBird = false;
 				player.throwFood();
-				for(NamedThing thing : game.getBoard().get(Integer.valueOf(input[2])).get(Integer.valueOf(input[3]))) {
+				BirdFood newFood = new BirdFood("Food", "Use to scare away Big Birds", Integer.valueOf(input[2]), Integer.valueOf(input[3]), 5);
+				newFood.setEnabled(false);
+				for(NamedThing thing : game.getBoard().get(Integer.valueOf(input[3])).get(Integer.valueOf(input[2]))) {
 					if(thing instanceof BigBird) {
+						((BigBird) thing).dropItems(Item.class);
 						((BigBird) thing).setEnabled(false);
-						System.out.println("You threw 5 bird food");
+						System.out.println("You threw 5 bird food.");
 						System.out.println("You scared the bird away!\n");
+						scaredBird = true;
 						break;
 					}
 				}
-				System.out.println("You threw 5 bird food\n");
-				BirdFood bfood = new BirdFood("Food", "Use to scare away Big Birds", Integer.valueOf(input[2]), Integer.valueOf(input[3]), 5);
-				things.add(bfood);
+				System.out.println("You threw 5 bird food.\n");
+				if(!scaredBird)
+					newFood.setEnabled(true);
+				things.add(newFood);
 			} else if(input.length == 2 && input[0].equals("fight") && input[1].equals("elmo")) {
 				if(elmo.isEnabled()) {
 					
