@@ -1,11 +1,22 @@
-
 public class Player extends Entity {
-	private int goldCount = 0;
-	private ArrayList<Item> stuff = new ArrayList<Item>;
+
+	private GoldFish goldfish;
+	private BirdFood birdfood;
+	
 	public Player(String name, String desc, int xPos, int yPos) {
 		super(name, desc, xPos, yPos);
-		goldCount = 0;
-
+		goldfish = new GoldFish("Goldfish", "Food to access Elmo", xPos, yPos, 0);
+		birdfood = new BirdFood("Birdfood", "Food to scare away birds", xPos, yPos, 0);
+		items.add(goldfish);
+		items.add(birdfood);
+	}
+	
+	public GoldFish getGoldfish() {
+		return goldfish;
+	}
+	
+	public BirdFood getBirdfood() {
+		return birdfood;
 	}
 	
 	public void moveNorth() {
@@ -24,25 +35,20 @@ public class Player extends Entity {
 	public void moveEast() {
 		moveTo(getX() + 1, getY());
 	}
-	public  void throw() {
-		for(Item o : stuff) {
-			if(o instanceOf GoldFish)
-				break;
-			else
-				stuff.remove(o.get());
-			
-		}
-	}
 	
-	public void pickUpGoldFish(int amt) {
-		numGold += amt;
+	public void throwFood() {
+		birdfood.removeFood(5);
 	}
 	
 	public void pickUpItem(Item i) {
-		items.add(i);
-	}
-	
-	public int getGoldCount() {
-		return goldCount;
+		if(i instanceof BirdFood) {
+			birdfood.addFood(((BirdFood) i).getAmount());
+			i.setEnabled(false);
+		} else if(i instanceof GoldFish) {
+			goldfish.addFood(((GoldFish) i).getAmount());
+			i.setEnabled(false);
+		} else {
+			items.add(i);
+		}
 	}
 }

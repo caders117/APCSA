@@ -3,6 +3,9 @@ import java.util.List;
 
 public class GameBoard {
 	
+	static String bird = "\uD83D\uDC26";
+	
+	
 	List<ArrayList<ArrayList<NamedThing>>> board;
 	public GameBoard(int width, int height) {
 		board = new ArrayList<ArrayList<ArrayList<NamedThing>>>();
@@ -31,7 +34,8 @@ public class GameBoard {
 		if(!getBoard().get(y).get(x).isEmpty()) {
 			 for(int i = 0; i < getBoard().get(y).get(x).size(); i++) {
 			 	contentObj = getBoard().get(y).get(x).get(i);
-			 	contentStr += contentObj.toString() + "\n";
+			 	if(contentObj.isEnabled())
+			 		contentStr += contentObj.toString() + "\n";
 			 }
 		} else {
 			contentStr = "There is nothing at position (" + x + ", " + y + ")\n"; 
@@ -54,7 +58,7 @@ public class GameBoard {
 		boardStr += "\n";
 		boardStr += "  +";
 		for(int w = 0; w < board.get(0).size(); w++) {
-			boardStr += "----+";
+			boardStr += "-----+";
 		}
 		boardStr += "\n";
 		
@@ -66,16 +70,25 @@ public class GameBoard {
 			boardStr += h + " |";
 			for(int w = 0; w < board.get(h).size(); w++) {
 				if(board.get(h).get(w).isEmpty()) {
-					boardStr += "    |";
+					boardStr += "     |";
 				} else {
-					boardStr += "  " + board.get(h).get(w).get(0).getName().charAt(0) + " |";
+					boolean added = false;
+					for(int i = 0; i < board.get(h).get(w).size(); i++) {
+						if(board.get(h).get(w).get(i).isEnabled()) {
+							boardStr += "  " + board.get(h).get(w).get(0).getName().charAt(i) + "  |";
+							added = true;
+							break;
+						}
+					}
+					if(!added)
+						boardStr += "     |";
 				}
 			}
 			boardStr += "\n  +";
 			
 			// Horizontal row between cells
 			for(int w = 0; w < board.get(h).size(); w++) {
-				boardStr += "----+";
+				boardStr += "-----+";
 			}
 			boardStr += "\n";
 		}

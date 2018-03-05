@@ -3,12 +3,22 @@ public class NamedThing {
 	private int boundsX, boundsY;
 	private int x, y;
 	private String name, description;
+	boolean enabled;
 	
 	public NamedThing(String name, String description, int xPos, int yPos) {
 		x = xPos;
 		y = yPos;
 		this.name = name;
 		this.description = description;
+		enabled = true;
+	}
+	
+	public void setEnabled(boolean b) {
+		enabled = b;
+	}
+	
+	public boolean isEnabled() {
+		return enabled;
 	}
 	
 	public void setBounds(int x, int y) {
@@ -17,14 +27,20 @@ public class NamedThing {
 	}
 	
 	public void moveTo(int newX, int newY) {
-		System.out.println(newX + " " + boundsX);
-		System.out.println(newY + " " + boundsY);
 		if(newX < 0 || newY < 0 || newX > boundsX || newY > boundsY) {
 			System.out.println("Can't move out of map.");
 			return;
 		}
 		x = newX;
 		y = newY;
+	}
+	
+	public int getBoundsX() {
+		return boundsX;
+	}
+	
+	public int getBoundsY() {
+		return boundsY;
 	}
 	
 	public int getX() {

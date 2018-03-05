@@ -6,10 +6,24 @@ public class Elmo extends Entity{
 	public Elmo(String name, String desc, int xPos, int yPos) {
 		super(name, desc, xPos, yPos);
 	}
+	
+	public boolean isAdjacent(int x, int y) {
+		if(this.getX() - 1 == x) {
+			if(this.getY() - 1 == y || this.getY() == y || this.getY() + 1 == y)
+				return true;
+		} else if(this.getX() == x) {
+			if(this.getY() - 1 == y || this.getY() == y || this.getY() + 1 == y)
+				return true;
+		} else if(this.getX() == x) {
+			if(this.getY() - 1 == y || this.getY() == y || this.getY() + 1 == y)
+				return true;
+		}
+		return false;
+	}
 
 	public void trivia() {
-		boolean b = true;
-		while(b= true) {
+		Scanner scan = Game.scan;
+		while(true) {
 			System.out.println("When was the first epidsode of Sesame Street aired?" +
 					"\nA.1969" + "\nB.1970" + "\nC.1968" + "\nD.2014");
 			String answer = scan.nextLine();
@@ -51,7 +65,6 @@ public class Elmo extends Entity{
 				break;
 			}
 			System.out.println("Congratulations, you have won Sesame Adventure!");
-			b = false;
 		}
 	}
 

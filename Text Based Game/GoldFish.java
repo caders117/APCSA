@@ -5,4 +5,16 @@ public class GoldFish extends Item {
 		super(name, desc, xPos, yPos);
 		amt = amount;
 	}
+	
+	public int getAmount() {
+		return amt;
+	}
+	
+	public void addFood(int amt) {
+		this.amt += amt;
+	}
+	
+	public String toString() {
+		return super.toString() + "  Amount: " + amt;
+	}
 }

@@ -9,8 +9,8 @@ public class Entity extends NamedThing {
 		items = new ArrayList<Item>();
 	}
 	
-	public void pickUpItem(Item i) {
-		items.add(i);
+	public ArrayList<Item> getItems() {
+		return items;
 	}
 	
 	public void dropItem(Item i) {
