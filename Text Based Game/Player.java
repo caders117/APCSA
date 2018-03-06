@@ -1,3 +1,9 @@
+/**
+ * This class represents the player who moves around the grid and tries
+ * to win the game. It extends entity.
+ * @author Jonathon Webster and Cade Richard
+ * @version 2/27/18
+ */
 public class Player extends Entity {
 
 	public Player(int xPos, int yPos) {
