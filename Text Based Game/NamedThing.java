@@ -1,4 +1,8 @@
-
+/**
+ * This class enables later classes to set their objects.
+ * @author Jonathon Webster and Cade Richard
+ * @version 2/23/18
+ */
 public abstract class NamedThing {
 	private int boundsX, boundsY;
 	private int x, y;
