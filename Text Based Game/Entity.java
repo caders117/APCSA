@@ -1,6 +1,10 @@
 import java.util.ArrayList;
 import java.util.Collection;
-
+/**
+ * This class is the parent class for all entities, with methods and other stuff
+ * @author Jonathon Webster and Cade Richard
+ * @version 2/23/18
+ */
 public abstract class Entity extends NamedThing {
 	
 	ArrayList<Item> items;
