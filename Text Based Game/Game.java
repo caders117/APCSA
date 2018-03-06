@@ -1,9 +1,12 @@
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Game {
 
 	static Scanner scan = new Scanner(System.in);
+	static int NUM_BIGBIRDS = 15;
+	static int NUM_BIRDFOOD = 10;
 
 	public static void main(String[] args) {		
 		GameBoard game = new GameBoard(10, 10);
@@ -14,17 +17,52 @@ public class Game {
 		elmo.setEnabled(false);
 		things.add(elmo);
 		Player player = new Player(0, 0);
-		player.addItem(new GoldFish(0, 0, 14));
 		things.add(player);
 		things.addAll(player.getFoods());
-		BigBird b1 = new BigBird(3, 3);
-		b1.getBirdfood().addFood(3);
-		b1.getGoldfish().addFood(2);
-		things.add(b1);
-		things.addAll(b1.getFoods());
-		BirdFood bf = new BirdFood(2, 0, 10);
-		things.add(bf);
-
+		
+		BigBird[] bigBirds = new BigBird[NUM_BIGBIRDS];
+		Random rand = new Random();
+		int x, y, foodAmt, goldAmt;
+		ArrayList<Integer[]> coords = new ArrayList<Integer[]>();
+		// Elmo
+		coords.add(new Integer[] {5, 5});
+		for(int i = 0; i < NUM_BIGBIRDS; i++) {
+			x = rand.nextInt(10);
+			y = rand.nextInt(10);
+			Integer[] temp = {x, y};
+			while (coords.contains(temp)) {
+				x = rand.nextInt(10);
+				y = rand.nextInt(10);
+				temp[0] = x;
+				temp[1] = y;
+			}
+			coords.add(new Integer[] {x, y});
+			
+			foodAmt = rand.nextInt(5) + 1;
+			goldAmt = rand.nextInt(3) + 1;
+			bigBirds[i] = new BigBird(x, y, foodAmt, goldAmt);
+			things.add(bigBirds[i]);
+			things.addAll(bigBirds[i].getFoods());
+		}
+		
+		BirdFood[] birdFood = new BirdFood[NUM_BIRDFOOD];
+		int amt;
+		for(int i = 0; i < NUM_BIRDFOOD; i++) {
+			x = rand.nextInt(10);
+			y = rand.nextInt(10);
+			Integer[] temp = {x, y};
+			while (coords.contains(temp)) {
+				x = rand.nextInt(10);
+				y = rand.nextInt(10);
+				temp[0] = x;
+				temp[1] = y;
+			}
+			amt = rand.nextInt(5) + 5;
+			coords.add(new Integer[] {x, y});
+			birdFood[i] = new BirdFood(x, y, amt);
+			things.add(birdFood[i]);
+		}
+		
 		game.updateBoard(things);
 		updateBounds(things, game);
 
@@ -32,7 +70,7 @@ public class Game {
 		System.out.println("Your goal is to acquire enough goldfish so that you can fight Elmo.");
 		System.out.println("You can get goldfish by scaring away Big Birds.");
 		System.out.println("Type 'help' for a list of commands.");
-		System.out.println("Type '<command> help' for further details on how to use the command.");
+		System.out.println("Type 'help' for further details on how to use the command.");
 		System.out.println("Good luck!");
 		System.out.println(game.printBoard());
 
