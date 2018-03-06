@@ -1,3 +1,9 @@
+/**
+ * This is the driver program that uses methods and objects from
+ * various classes to make a text based adventure game
+ * @author Jonathon Webster and Cade Richard
+ * @version 2/29/18
+ */
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
