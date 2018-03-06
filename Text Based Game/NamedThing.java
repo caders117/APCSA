@@ -1,5 +1,5 @@
 
-public class NamedThing {
+public abstract class NamedThing {
 	private int boundsX, boundsY;
 	private int x, y;
 	private String name, description;

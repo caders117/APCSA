@@ -2,8 +2,8 @@ public class BirdFood extends Item {
 	
 	private int amt;
 	
-	public BirdFood(String name, String desc, int xPos, int yPos, int amount) {
-		super(name, desc, xPos, yPos);
+	public BirdFood(int xPos, int yPos, int amount) {
+		super("Food", "Use to scare away Big Birds", xPos, yPos);
 		amt = amount;
 	}
 	

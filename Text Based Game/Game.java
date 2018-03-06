@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Scanner;
 
 public class Game {
@@ -9,28 +8,27 @@ public class Game {
 	public static void main(String[] args) {		
 		GameBoard game = new GameBoard(10, 10);
 		ArrayList<NamedThing> things = new ArrayList<NamedThing>();
-		
+
 		//add stuff to gameboard
-		Elmo elmo = new Elmo("ELMO!!", "Elmo is the boss.  Good luck.", game.getBoard().get(0).size()/2, game.getBoard().size()/2);
+		Elmo elmo = new Elmo(game.getBoard().get(0).size()/2, game.getBoard().size()/2);
 		elmo.setEnabled(false);
 		things.add(elmo);
-		Player player = new Player("Player", "You", 0, 0);
+		Player player = new Player(0, 0);
+		player.addItem(new GoldFish(0, 0, 14));
 		things.add(player);
-		things.add(player.getBirdfood());
-		things.add(player.getGoldfish());
-		BigBird b1 = new BigBird("Big Bird", "A big, yellow, dangerous bird", 3, 3);
-		b1.setBirdFood(3);
-		b1.setGoldFish(2);
+		things.addAll(player.getFoods());
+		BigBird b1 = new BigBird(3, 3);
+		b1.getBirdfood().addFood(3);
+		b1.getGoldfish().addFood(2);
 		things.add(b1);
-		things.add(b1.getGoldfish());
-		things.add(b1.getBirdfood());
-		BirdFood bf = new BirdFood("Food", "Use to scare away Big Birds", 2, 0, 10);
+		things.addAll(b1.getFoods());
+		BirdFood bf = new BirdFood(2, 0, 10);
 		things.add(bf);
-		
+
 		game.updateBoard(things);
 		updateBounds(things, game);
-		
-		System.out.println("Welcome to [Game name]!");
+
+		System.out.println("Welcome to Sesame Adventure!");
 		System.out.println("Your goal is to acquire enough goldfish so that you can fight Elmo.");
 		System.out.println("You can get goldfish by scaring away Big Birds.");
 		System.out.println("Type 'help' for a list of commands.");
@@ -67,16 +65,16 @@ public class Game {
 				continue;
 			} else if(input[0].equals("move") && input.length == 2) {
 				switch(input[1]) {
-					case "north": player.moveNorth();
-									break;
-					case "south": player.moveSouth();
-									break;
-					case "west":  player.moveWest();
-									break;
-					case "east":  player.moveEast();
-									break;
-					default:	  System.out.println("Invalid Direction");
-									break;
+				case "north": player.moveNorth();
+				break;
+				case "south": player.moveSouth();
+				break;
+				case "west":  player.moveWest();
+				break;
+				case "east":  player.moveEast();
+				break;
+				default:	  System.out.println("Invalid Direction");
+				break;
 				}
 			} else if(input.length == 3 && input[0].equals("pick") && input[1].equals("up")) {
 				ArrayList<Item> availableItems = checkAdjCellsForItems(game, player);
@@ -89,7 +87,7 @@ public class Game {
 							player.updateItems();
 						}
 					}
-					
+
 					if(!itemsPickedUp.isEmpty()) {
 						for(Item i : itemsPickedUp) {
 							if(i instanceof BirdFood)
@@ -100,8 +98,6 @@ public class Game {
 								System.out.println("Picked up " + i.getName());
 						}
 						System.out.println();
-						game.updateBoard(things);
-						continue;
 					} else {
 						System.out.println("There are no " + input[2] + "s available to pick up.\n");
 						continue;
@@ -111,27 +107,35 @@ public class Game {
 					continue;
 				}
 			} else if(input.length == 4 && input[0].equals("throw") && input[1].equals("food")) {
-				boolean scaredBird = false;
-				player.throwFood();
-				BirdFood newFood = new BirdFood("Food", "Use to scare away Big Birds", Integer.valueOf(input[2]), Integer.valueOf(input[3]), 5);
-				newFood.setEnabled(false);
-				for(NamedThing thing : game.getBoard().get(Integer.valueOf(input[3])).get(Integer.valueOf(input[2]))) {
-					if(thing instanceof BigBird) {
-						((BigBird) thing).dropItems(Item.class);
-						((BigBird) thing).setEnabled(false);
-						System.out.println("You threw 5 bird food.");
-						System.out.println("You scared the bird away!\n");
-						scaredBird = true;
-						break;
+				if(Integer.valueOf(input[2]) >= player.getX() - 2 &&
+						Integer.valueOf(input[2]) <= player.getX() + 2 &&
+						Integer.valueOf(input[3]) >= player.getY() - 2 &&
+						Integer.valueOf(input[3]) <= player.getY() + 2) {
+					boolean scaredBird = false;
+					player.throwFood();
+					BirdFood newFood = new BirdFood(Integer.valueOf(input[2]), Integer.valueOf(input[3]), 5);
+					newFood.setEnabled(false);
+					for(NamedThing thing : game.getBoard().get(Integer.valueOf(input[3])).get(Integer.valueOf(input[2]))) {
+						if(thing instanceof BigBird) {
+							((BigBird) thing).dropItems(Item.class);
+							((BigBird) thing).setEnabled(false);
+							System.out.println("You threw 5 bird food.");
+							System.out.println("You scared the bird away!\n");
+							scaredBird = true;
+							break;
+						}
 					}
+					System.out.println("You threw 5 bird food.\n");
+					if(!scaredBird)
+						newFood.setEnabled(true);
+					things.add(newFood);
+				} else {
+					System.out.println("The bird food is much too heavy to throw that far you silly goose.\n");
+					continue;
 				}
-				System.out.println("You threw 5 bird food.\n");
-				if(!scaredBird)
-					newFood.setEnabled(true);
-				things.add(newFood);
 			} else if(input.length == 2 && input[0].equals("fight") && input[1].equals("elmo")) {
 				if(elmo.isEnabled()) {
-					
+					elmo.trivia();
 				}
 			} else if(input[0].equals("quit") && input.length == 1) {
 				System.out.println("Thank you for playing!  Come again soon.");
@@ -140,7 +144,7 @@ public class Game {
 				System.out.println("Invalid command entered.\n");
 				continue;
 			}
-			if(player.getGoldfish().getAmount() > 14) {
+			if(player.getGoldfish().getAmount() > 14 && !elmo.isEnabled()) {
 				elmo.setEnabled(true);
 				System.out.println("ELMO has appeared.  Move next to him to fight him.");
 			}
@@ -150,19 +154,19 @@ public class Game {
 		}
 		scan.close();
 	}
-	
+
 	public static ArrayList<Item> checkAdjCellsForItems(GameBoard game, Player player) {
 		ArrayList<Item> availableItems = new ArrayList<Item>();
 		for(int y = -1; y < 2; y++)
 			for(int x = -1; x < 2; x++) 
 				if(player.getX() + x >= 0 && player.getX() + x < player.getBoundsX() && player.getY() + y >= 0 && player.getY() < player.getBoundsY()) {
 					for(NamedThing thing : game.getBoard().get(player.getY() + y).get(player.getX() + x)) {
-						if(thing instanceof Item) availableItems.add((Item) thing);
+						if(thing instanceof Item && thing.isEnabled()) availableItems.add((Item) thing);
 					}
-		}
+				}
 		return availableItems;
 	}
-	
+
 	public static void updateBounds(ArrayList<NamedThing> things, GameBoard game) {
 		for(NamedThing thing : things)
 			thing.setBounds(game.getBoard().get(0).size(), game.getBoard().size());
@@ -172,7 +176,7 @@ public class Game {
 
 		return inputStr;
 	}
-	
+
 	public static String keyString() {
 		String key = "Key:\n"
 				+ "P - Player [You]\n"
@@ -182,7 +186,7 @@ public class Game {
 				+ "G - Goldfish [Used to fight Elmo]\n";
 		return key;
 	}
-	
+
 	public static String helpString() {
 		String help = "List of Commands:\n"
 				+ "help - Prints a list of commands.\n"
@@ -196,7 +200,7 @@ public class Game {
 				+ "       - west - moves player towards left side of screen\n"
 				+ "       - east - moves player towards right side of screen\n"
 				+ "pick up <item name> - picks up item in adjacent cell with specified name\n"
-				+ "throw food <x> <y> - throws bird food at specified coordinate.\n"
+				+ "throw food <x> <y> - throws bird food at specified coordinate.  You cannot throw food more than two squares away.\n"
 				+ "fight elmo - if elmo is adjacent to the player [you], initiates boss elmo fight.\n"
 				+ "quit - Exits out of the game.  Progress is not saved.\n";
 		return help;

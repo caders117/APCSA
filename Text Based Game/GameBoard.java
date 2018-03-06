@@ -5,6 +5,19 @@ public class GameBoard {
 	
 	static String bird = "\uD83D\uDC26";
 	
+	public static boolean isAdjacent(NamedThing n1, NamedThing n2) {
+		if(n1.getX() - 1 == n2.getX()) {
+			if(n1.getY() - 1 == n2.getY() || n1.getY() == n2.getY() || n1.getY() + 1 == n2.getY())
+				return true;
+		} else if(n1.getX() == n2.getX()) {
+			if(n1.getY() - 1 == n2.getY() || n1.getY() == n2.getY() || n1.getY() + 1 == n2.getY())
+				return true;
+		} else if(n1.getX() == n2.getX()) {
+			if(n1.getY() - 1 == n2.getY() || n1.getY() == n2.getY() || n1.getY() + 1 == n2.getY())
+				return true;
+		}
+		return false;
+	}
 	
 	List<ArrayList<ArrayList<NamedThing>>> board;
 	public GameBoard(int width, int height) {

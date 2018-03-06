@@ -1,8 +1,8 @@
 public class GoldFish extends Item {
 	private int amt;
 	
-	public GoldFish (String name, String desc, int xPos, int yPos, int amount) {
-		super(name, desc, xPos, yPos);
+	public GoldFish (int xPos, int yPos, int amount) {
+		super("Goldfish", "Food to access Elmo", xPos, yPos);
 		amt = amount;
 	}
 	

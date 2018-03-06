@@ -1,7 +1,7 @@
 public class Player extends Entity {
 
-	public Player(String name, String desc, int xPos, int yPos) {
-		super(name, desc, xPos, yPos);
+	public Player(int xPos, int yPos) {
+		super("Player", "You", xPos, yPos);
 	}
 	
 	public void moveNorth() {
