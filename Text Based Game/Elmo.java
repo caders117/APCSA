@@ -1,5 +1,10 @@
 import java.util.*;
-
+/**
+ * This class represents the Elmo object, and has a method that ends the game with
+ * a win or lose
+ * @author Jonathon Webster and Cade Richard
+ * @version 2/29/18
+ */
 public class Elmo extends Entity{
 
 	Scanner scan = new Scanner(System.in);
