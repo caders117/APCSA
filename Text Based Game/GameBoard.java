@@ -1,6 +1,10 @@
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * This class makes a 2D ArrayList for a game board
+ * @author Jonathon Webster and Cade Richard
+ * @version 2/29/18
+ */
 public class GameBoard {
 	
 	static String bird = "\uD83D\uDC26";
