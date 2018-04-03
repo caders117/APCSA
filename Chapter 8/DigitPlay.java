@@ -16,7 +16,7 @@ public class DigitPlay
         System.out.println("\f");
         while(true){
             System.out.println ();
-            System.out.print ("Please enter a positive integer: ");
+            System.out.print ("Please enter a positive integer (-1 to quit): ");
             num = scan.nextInt ();
             if(num == -1) {
                 break;
@@ -36,6 +36,7 @@ public class DigitPlay
                     System.out.println("error");
             }
         }
+        System.out.println("Program exit");
     }
     
     /**
